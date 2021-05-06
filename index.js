@@ -13,6 +13,7 @@ const quizantworten = {
 };
 
 // Quizbereich DOM
+
 const frageanzeige = document.querySelector(".fragen");
 const resultatanzeige = document.querySelector(".resultatanzeige");
 const nachstefragebtn = document.querySelector(".startequiz");
@@ -25,6 +26,9 @@ function resultatAusgabe(){
    resultatanzeige.innerHTML = "richtig";
    punkte++;
 }
+
+
+//antworten überprüfen
 
 function antwortPruefen() {
    const eingabe = prompt("Geben Sie ihre Antwort ein");
@@ -90,10 +94,26 @@ nachstefragebtn.addEventListener("click", function (Event) {
             frageanzeige.innerHTML = quizfragen.frage3;
             resultatanzeige.innerHTML = "";
             setTimeout(antwortPruefen, 3000);
+
+            nachstefragebtn.value = "Auswertung";
+            nachstefragebtn.classList.add("auswerten");
+            nachstefragebtn.classList.remove("frage3");
+
          } else {
             return;
          }
       });
+
    });
-   
+   // Auswertungs Eventlistener
+   nachstefragebtn.addEventListener("click", function (Event){
+      const target = Event.target;
+
+      if (target.classList.contains("auswerten")){
+         frageanzeige.innerHTML = "Das Quiz ist beendet!";
+         resultatanzeige.innerHTML = " Sie haben " + punkte + " Punkte von 3 erreicht.";
+      } else {
+         return;
+      }
+   })
 });
