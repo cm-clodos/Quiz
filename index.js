@@ -23,7 +23,7 @@ const nachstefragebtn = document.querySelector(".startequiz");
 let punkte = 0;
 
 function resultatAusgabe(){
-   resultatanzeige.innerHTML = "richtig";
+   resultatanzeige.innerHTML = "Richtig!";
    punkte++;
 }
 
@@ -44,7 +44,7 @@ function antwortPruefen() {
    if (capitaleingabe === quizantworten.antwort3) {
       return resultatAusgabe();
    } else {
-      return resultatanzeige.innerHTML = "falsch";
+      return resultatanzeige.innerHTML = "Falsch!";
    }
 }
 
@@ -57,7 +57,7 @@ nachstefragebtn.addEventListener("click", function (Event) {
    if (target.classList.contains("startequiz")) {
       frageanzeige.innerHTML = quizfragen.frage1;
       resultatanzeige.innerHTML = "";
-      setTimeout(antwortPruefen, 3000);
+      setTimeout(antwortPruefen, 2000);
 
       nachstefragebtn.classList.add("frage2");
       nachstefragebtn.classList.remove("startequiz");
@@ -76,7 +76,7 @@ nachstefragebtn.addEventListener("click", function (Event) {
       if (target.classList.contains("frage2")) {
          frageanzeige.innerHTML = quizfragen.frage2;
          resultatanzeige.innerHTML = "";
-         setTimeout(antwortPruefen, 3000);
+         setTimeout(antwortPruefen, 2000);
 
          nachstefragebtn.classList.add("frage3");
          nachstefragebtn.classList.remove("frage2");
@@ -93,7 +93,7 @@ nachstefragebtn.addEventListener("click", function (Event) {
          if (target.classList.contains("frage3")) {
             frageanzeige.innerHTML = quizfragen.frage3;
             resultatanzeige.innerHTML = "";
-            setTimeout(antwortPruefen, 3000);
+            setTimeout(antwortPruefen, 2000);
 
             nachstefragebtn.value = "Auswertung";
             nachstefragebtn.classList.add("auswerten");
